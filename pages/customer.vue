@@ -1,49 +1,6 @@
 <template >
     <div class="container">
-        <div class="header-section">
-            <div class="navigation">
-                <button class="arrow-left">
-                    <img src="../assets/icons/arrow-left.svg" alt="arrow-left" />
-                </button>
-                <div class="nav-bar">
-                    <div class="logo">
-                        <img src="../assets/svg/logo.svg" alt="logo" />
-                    </div>
-                    <div class="config">
-                        <div class="show">
-                            Showing:
-                            <select>
-                                <option value="Week">Weekly</option>
-                                <option value="Month">Monthly</option>
-                                <option value="Year">Yearly</option>
-                            </select>
-                        </div>
-                        <div class="docs">
-                            Export Data
-                            <img src="../assets/icons/document-download.svg" alt="document-download" />
-                        </div>
-                        <div class="search">
-                            <img src="../assets/icons/search-normal.svg" alt="search-normal" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="wrapper">
-                <div class="breadcrumb">Homepage / <span>Admin Panel</span></div>
-                <div class="hero-text">
-                    <h1>Hello, Farooq 👋🏻</h1>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur. Purus in scelerisque ut
-                        felis sit et a proin nulla.
-                    </p>
-                </div>
-                <div class="tab-bar">
-                    <div class="item ">General</div>
-                    <div class="item active">Customer Management</div>
-                    <div class="item">Invoicing</div>
-                </div>
-            </div>
-        </div>
+
         <div class="main-section">
             <div class="wrapper">
                 <div class="customer">
@@ -300,6 +257,8 @@ axios.get(runtimeConfig.public.API_BASE_URL + "overall/customers-managment?page_
 }
 
 .wrapper {
+    display: flex;
+    justify-content: flex-start;
     width: 94%;
     height: auto;
 
