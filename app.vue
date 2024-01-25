@@ -228,7 +228,21 @@
 .active {
   background: #4478ff;
 }
+@media screen and (min-width: 1560px) {
+  .wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
 
+  .navigation {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  .main-section {
+    height: 100vh;
+  }
+}
 
 @media screen and (max-width:650px) {
     .filters {
