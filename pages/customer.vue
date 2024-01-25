@@ -345,7 +345,7 @@ axios.get(runtimeConfig.public.API_BASE_URL + "overall/customers-managment?page_
     height: auto;
     display: flex;
     justify-content: space-between;
-    padding: 10px 10px;
+    padding: 24px;
 }
 
 .customer-logo {

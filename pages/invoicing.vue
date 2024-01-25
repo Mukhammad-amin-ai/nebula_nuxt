@@ -354,7 +354,8 @@ axios.get(runtimeConfig.public.API_BASE_URL + "overall/invoicing?page_number=1&p
     height: auto;
     display: flex;
     justify-content: space-between;
-    padding: 10px 10px;
+    padding: 24px;
+
 }
 
 .customer-logo {
