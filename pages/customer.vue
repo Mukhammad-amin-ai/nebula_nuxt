@@ -473,6 +473,10 @@ th {
     background: rgba(224, 225, 229, 0.07);
 }
 
+th:nth-child(1) .table-head-item {
+    padding-left: 25px;
+
+}
 
 @media screen and (max-width:650px) {
     .filters {
