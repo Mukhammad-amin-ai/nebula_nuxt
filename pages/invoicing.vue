@@ -348,7 +348,7 @@ axios.get(runtimeConfig.public.API_BASE_URL + "overall/invoicing?page_number=1&p
     border-radius: 16px;
     background-color: #fff;
     position: absolute;
-    top: -120px;
+    top: -138px;
 }
 
 .customer-header {
@@ -356,8 +356,7 @@ axios.get(runtimeConfig.public.API_BASE_URL + "overall/invoicing?page_number=1&p
     height: auto;
     display: flex;
     justify-content: space-between;
-    padding:16px;
-
+    padding:24px;
 }
 
 .customer-logo {
