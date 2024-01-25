@@ -1,6 +1,6 @@
 <template >
     <div class="container">
-    
+
         <div class="main-section">
             <div class="wrapper">
                 <div class="customer">
@@ -96,7 +96,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <card v-for="(item,index) in data" :key="index" :invoiceData="item" />
+                                <card v-for="(item, index) in data" :key="index" :invoiceData="item" />
                             </tbody>
                         </table>
                     </div>
@@ -107,49 +107,49 @@
 </template>
 <script lang="ts" setup>
 import card from '../components/invoicing/card.vue'
-import {ref} from "vue";
+import { ref } from "vue";
 import axios from "axios";
 
 
 interface invoicingData {
-  logo: string;
-  customer_id: number;
-  parent_id: number | null;
-  customer_type: string;
-  customer_name: string;
-  invoice_period: string | null;
-  due_date: string;
-  current_balance: number;
-  past_due_balance: number;
-  phone: string;
-  email: string;
-  invoice_status: string;
-  invoice_date: string;
-  reminder_sent: string;
+    logo: string;
+    customer_id: number;
+    parent_id: number | null;
+    customer_type: string;
+    customer_name: string;
+    invoice_period: string | null;
+    due_date: string;
+    current_balance: number;
+    past_due_balance: number;
+    phone: string;
+    email: string;
+    invoice_status: string;
+    invoice_date: string;
+    reminder_sent: string;
 }
 
-const data = ref < invoicingData[]> ( [
-  {
-    logo: "",
-    customer_id: 0,
-    parent_id: 0,
-    customer_type: "",
-    customer_name: "",
-    invoice_period: "",
-    due_date: "",
-    current_balance: 0,
-    past_due_balance: 0,
-    phone: "",
-    email: "",
-    invoice_status: "",
-    invoice_date: "",
-    reminder_sent: '',
-  },
+const data = ref<invoicingData[]>([
+    {
+        logo: "",
+        customer_id: 0,
+        parent_id: 0,
+        customer_type: "",
+        customer_name: "",
+        invoice_period: "",
+        due_date: "",
+        current_balance: 0,
+        past_due_balance: 0,
+        phone: "",
+        email: "",
+        invoice_status: "",
+        invoice_date: "",
+        reminder_sent: '',
+    },
 ])
 const runtimeConfig = useRuntimeConfig();
 
 axios.get(runtimeConfig.public.API_BASE_URL + "overall/invoicing?page_number=1&page_size=10").then((res) => {
-  data.value = res.data.data
+    data.value = res.data.data
 })
 </script>
 <style scoped>
@@ -340,10 +340,10 @@ axios.get(runtimeConfig.public.API_BASE_URL + "overall/invoicing?page_number=1&p
 .customer {
     width: 100%;
     height: auto;
-    width: 94%;
     background-color: #fff;
     border-radius: 16px;
     transform: translateY(-100px);
+    /* overflow: hidden; */
 }
 
 .customer-header {
@@ -351,7 +351,7 @@ axios.get(runtimeConfig.public.API_BASE_URL + "overall/invoicing?page_number=1&p
     height: auto;
     display: flex;
     justify-content: space-between;
-    padding: 24px;
+    padding: 14px;
 
 }
 
@@ -400,7 +400,7 @@ axios.get(runtimeConfig.public.API_BASE_URL + "overall/invoicing?page_number=1&p
     display: flex;
     flex-direction: column;
     padding: 24px 26px;
-    border-top:1px solid #EAEDF0;
+    border-top: 1px solid #EAEDF0;
     border-bottom: 1px solid #EAEDF0;
 }
 
@@ -480,6 +480,21 @@ th {
     gap: 117px;
     align-self: stretch;
     background: rgba(224, 225, 229, 0.07);
+}
+
+@media screen and (min-width: 1600px) {
+    .wrapper {
+        max-width: 1440px;
+        margin: 0 auto;
+    }
+
+    .main-section {
+        height: 100vh;
+    }
+
+    .customer {
+        height: 840px;
+    }
 }
 
 

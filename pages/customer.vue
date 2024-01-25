@@ -338,7 +338,7 @@ axios.get(runtimeConfig.public.API_BASE_URL + "overall/customers-managment?page_
     border-radius: 16px;
     background-color: #fff;
     transform: translateY(-100px);
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .customer-header {
@@ -346,7 +346,7 @@ axios.get(runtimeConfig.public.API_BASE_URL + "overall/customers-managment?page_
     height: auto;
     display: flex;
     justify-content: space-between;
-    padding: 24px;
+    padding: 14px;
 }
 
 .customer-logo {
@@ -394,7 +394,7 @@ axios.get(runtimeConfig.public.API_BASE_URL + "overall/customers-managment?page_
     display: flex;
     flex-direction: column;
     padding: 24px 26px;
-    border-top:1px solid #EAEDF0;
+    border-top: 1px solid #EAEDF0;
     border-bottom: 1px solid #EAEDF0;
 }
 
@@ -474,10 +474,27 @@ th {
     background: rgba(224, 225, 229, 0.07);
     white-space: nowrap;
 }
+
 th:nth-child(1) .table-head-item {
     padding-left: 25px;
 
 }
+
+@media screen and (min-width: 1600px) {
+    .wrapper {
+        max-width: 1440px;
+        margin: 0 auto;
+    }
+
+    .main-section {
+        height: 100vh;
+    }
+
+    .customer{
+        height: 840px;
+    }
+}
+
 
 @media screen and (max-width:650px) {
     .filters {
