@@ -1,0 +1,1 @@
+export { default } from "file:///D:/projects/freelancing/nebula_nuxt/node_modules/@nuxt/vite-builder/dist/runtime/client.manifest.mjs"

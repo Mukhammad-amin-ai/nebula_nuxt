@@ -1,0 +1,15 @@
+@font-face {
+  font-family: Euclid-Regular;
+  src: url("@/assets/fonts/regular.ttf");
+  /* ! font-weight =>  400 */
+}
+@font-face {
+  font-family: Euclid-Medium;
+  src: url("@/assets/fonts/medium.ttf");
+  /* ! font-weight =>  500 */
+}
+@font-face {
+  font-family: Euclid-SemiBold;
+  src: url("@/assets/fonts/semibold.ttf");
+  /* ! font-weight =>  600 */
+}
