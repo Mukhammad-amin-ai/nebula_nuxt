@@ -332,12 +332,19 @@ axios.get(runtimeConfig.public.API_BASE_URL + "overall/customers-managment?page_
     position: relative;
 }
 
+.main-section .wrapper {
+    display: flex;
+    justify-content: center;
+}
+
 .customer {
-    width: 100%;
+    width: 94%;
     height: auto;
     border-radius: 16px;
     background-color: #fff;
-    transform: translateY(-100px);
+    position: absolute;
+    top: -138px;
+    /* transform: translateY(-100px); */
     /* overflow: hidden; */
 }
 
@@ -490,9 +497,12 @@ th:nth-child(1) .table-head-item {
         height: 100vh;
     }
 
-    .customer{
+    .customer {
+        max-width: 1440px;
         height: 840px;
+        margin: 0 auto;
     }
+
 }
 
 

@@ -337,12 +337,19 @@ axios.get(runtimeConfig.public.API_BASE_URL + "overall/invoicing?page_number=1&p
     position: relative;
 }
 
+.main-section .wrapper {
+    display: flex;
+    justify-content: center;
+}
+
 .customer {
-    width: 100%;
+    width: 94%;
     height: auto;
-    background-color: #fff;
     border-radius: 16px;
-    transform: translateY(-100px);
+    background-color: #fff;
+    position: absolute;
+    top: -138px;
+    /* transform: translateY(-100px); */
     /* overflow: hidden; */
 }
 
@@ -493,8 +500,11 @@ th {
     }
 
     .customer {
+        max-width: 1440px;
+        margin: 0 auto;
         height: 840px;
     }
+
 }
 
 

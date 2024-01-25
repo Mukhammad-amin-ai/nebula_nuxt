@@ -978,6 +978,9 @@ tbody tr {
   .main-section {
     height: 100vh;
   }
+  .dashboard-wrapper{
+    top: -100px;
+  }
 }
 
 @media screen and (max-width: 1430px) {
