@@ -1,5 +1,6 @@
 <template>
-  <div id="chart">
+  <div id="chart" v-if="is_mount"
+>
 
     <apexchart
     type="line"
