@@ -33,7 +33,7 @@
         </td>
         <td>
             <div class="table-content-item">
-                <span style="width: 100px; text-overflow: ellipsis;  white-space:nowrap;  overflow:hidden; "> {{
+                <span style="width: 70px; text-overflow: ellipsis;  white-space:nowrap;  overflow:hidden; "> {{
                     customerData.email }}</span>
             </div>
         </td>

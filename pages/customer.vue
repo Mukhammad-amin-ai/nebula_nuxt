@@ -325,7 +325,7 @@ axios.get(runtimeConfig.public.API_BASE_URL + "overall/customers-managment?page_
 
 .main-section {
     width: 100%;
-    height: 800px;
+    height: 840px;
     background-color: #f8f8f8;
     display: flex;
     justify-content: center;
@@ -338,6 +338,7 @@ axios.get(runtimeConfig.public.API_BASE_URL + "overall/customers-managment?page_
     border-radius: 16px;
     background-color: #fff;
     transform: translateY(-100px);
+    overflow: hidden;
 }
 
 .customer-header {
@@ -464,15 +465,15 @@ th {
 .table-head-item {
     display: flex;
     height: 48px;
-    padding: 16px;
+    padding: 20px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 117px;
     align-self: stretch;
     background: rgba(224, 225, 229, 0.07);
+    white-space: nowrap;
 }
-
 th:nth-child(1) .table-head-item {
     padding-left: 25px;
 

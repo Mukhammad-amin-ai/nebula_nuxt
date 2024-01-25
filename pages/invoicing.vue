@@ -338,14 +338,11 @@ axios.get(runtimeConfig.public.API_BASE_URL + "overall/invoicing?page_number=1&p
 }
 
 .customer {
-    width: 94%;
-    height: auto;
-    border-radius: 16px;
-    background-color: #fff;
     width: 100%;
     height: auto;
-    border-radius: 16px;
+    width: 94%;
     background-color: #fff;
+    border-radius: 16px;
     transform: translateY(-100px);
 }
 
