@@ -38,8 +38,6 @@
 </template>
 <script lang="ts" setup>
 const runtimeConfig = useRuntimeConfig();
-console.log(runtimeConfig.public.API_BASE_URL);
-
 defineProps({
   topText: String,
   box1text: String,

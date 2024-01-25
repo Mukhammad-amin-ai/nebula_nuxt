@@ -1,11 +1,13 @@
 <template>
   <div id="chart">
-    <apexchart
-      type="bar"
-      height="350"
-      :options="chartData.chartOptions"
-      :series="chartData.series"
-    ></apexchart>
+    <ClientOnly>
+      <apexchart
+        type="bar"
+        height="350"
+        :options="chartData.chartOptions"
+        :series="chartData.series"
+      ></apexchart>
+    </ClientOnly>
   </div>
 </template>
 

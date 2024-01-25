@@ -1,11 +1,13 @@
 <template>
   <div id="chart">
+  <ClientOnly>
     <apexchart
-      type="line"
-      height="350"
-      :series="chartData.series"
-      :options="chartData.chartOptions"
+    type="line"
+    height="350"
+    :series="chartData.series"
+    :options="chartData.chartOptions"
     ></apexchart>
+  </ClientOnly>
   </div>
 </template>
 
@@ -13,6 +15,7 @@
 import axios from "axios";
 import VueApexCharts from "vue3-apexcharts";
 import { onMounted, ref, watch } from "vue";
+const runtimeConfig = useRuntimeConfig();
 
 interface SeriesData {
   name: string;
@@ -241,10 +244,9 @@ const average_cost_broker = ref<AverageCostBroker>({
   costs: [],
 });
 
-const runtimeConfig = useRuntimeConfig();
 
 axios
-  .get(runtimeConfig.public.API_BASE_URLP_URL + "overall/average-cost-broker")
+  .get(runtimeConfig.public.API_BASE_URL + "overall/average-cost-broker")
   .then((res) => {
     average_cost_broker.value = res.data;
     chartData.value = {
