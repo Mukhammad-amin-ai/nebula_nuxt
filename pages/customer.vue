@@ -159,6 +159,7 @@ axios.get(runtimeConfig.public.API_BASE_URL + "overall/customers-managment?page_
     flex-direction: column;
     align-items: center;
     background: rgba(25, 32, 56, 1);
+    padding: 0 48px;
 }
 
 .navigation {
@@ -334,12 +335,11 @@ axios.get(runtimeConfig.public.API_BASE_URL + "overall/customers-managment?page_
 }
 
 .customer {
-    width: 94%;
+    width: 100%;
     height: auto;
     border-radius: 16px;
     background-color: #fff;
-    position: absolute;
-    top: -100px;
+    transform: translateY(-100px);
 }
 
 .customer-header {
