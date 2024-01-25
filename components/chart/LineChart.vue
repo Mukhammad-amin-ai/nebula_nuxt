@@ -1,22 +1,24 @@
 <template>
   <div id="chart">
-  <ClientOnly>
+
     <apexchart
+        v-if="is_mount"
     type="line"
     height="350"
     :series="chartData.series"
     :options="chartData.chartOptions"
     ></apexchart>
-  </ClientOnly>
+
   </div>
 </template>
 
 <script lang="ts" setup>
+
 import axios from "axios";
 import VueApexCharts from "vue3-apexcharts";
 import { onMounted, ref, watch } from "vue";
 const runtimeConfig = useRuntimeConfig();
-
+const is_mount = ref(false)
 interface SeriesData {
   name: string;
   data: {
@@ -367,6 +369,10 @@ axios
   .catch((error) => {
     console.error("Error fetching data:", error);
   });
+onMounted(() => {
+  is_mount.value = true;
+});
+
 </script>
 
 <style>

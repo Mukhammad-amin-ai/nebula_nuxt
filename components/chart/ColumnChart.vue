@@ -1,13 +1,14 @@
 <template>
   <div id="chart">
-    <ClientOnly>
+
       <apexchart
+          v-if="is_mount"
         type="bar"
         height="350"
         :options="chartData.chartOptions"
         :series="chartData.series"
       ></apexchart>
-    </ClientOnly>
+
   </div>
 </template>
 
@@ -97,6 +98,7 @@ interface AveragePayoutCarrier {
   revenues: { year: string; month: string; revenue: string | null }[];
   margins: { year: string; month: string; margin: string | null }[];
 }
+const is_mount = ref(false)
 const average_payout_carrier = ref<AveragePayoutCarrier>({
   average_revenue: 0,
   average_margin: 0,
@@ -276,6 +278,11 @@ axios
   .catch((error) => {
     console.error("Error fetching data:", error);
   });
+
+onMounted(() => {
+  is_mount.value = true;
+});
+
 </script>
 <style>
 .apexcharts-bar-area {
