@@ -229,6 +229,26 @@
   background: #4478ff;
 }
 
+
+.customer {
+  width: 94%;
+  height: auto;
+  border-radius: 16px;
+  background-color: #fff;
+  position: absolute;
+  top: -138px;
+}
+
+.customer-header {
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 24px;
+
+}
+
+
 @media screen and (min-width: 1560px) {
   .wrapper {
     max-width: 1440px;
@@ -240,7 +260,7 @@
     margin: 0 auto;
   }
 
-  
+
   .main-section {
     height: 100vh;
   }
