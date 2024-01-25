@@ -10,7 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "nuxt": "3.2.3",
+    "nuxt": "3.7.0",
     "nuxt-simple-sitemap": "^4.4.1",
     "vue": "^3.4.14",
     "vue-router": "^4.2.5"

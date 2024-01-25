@@ -2,7 +2,6 @@
   <div id="chart">
 
     <apexchart
-        v-if="is_mount"
     type="line"
     height="350"
     :series="chartData.series"
