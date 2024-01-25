@@ -286,7 +286,7 @@ import LineChartVue from "@/components/chart/LineChart.vue";
 import ColumnChart from "@/components/chart/ColumnChart.vue";
 
 interface OveralLCustomers {
-  active: string;
+  active: number;
   inactive: number;
   suspended: number;
   increase: number;
@@ -355,7 +355,7 @@ interface TopCarriers {
 }
 
 const overall_customer = ref<OveralLCustomers>({
-  active: "",
+  active: 0,
   inactive: 0,
   suspended: 0,
   increase: 0,

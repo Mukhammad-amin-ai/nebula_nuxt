@@ -3,6 +3,7 @@
         <td>
             <div class="table-content-item">
                 <img :src="customerData.logo" :alt="customerData.customer_name">
+                {{ customerData.customer_id }}
             </div>
         </td>
         <td>
@@ -32,13 +33,14 @@
         </td>
         <td>
             <div class="table-content-item">
-                {{ customerData.email }}
+                <span style="width: 100px; text-overflow: ellipsis;  white-space:nowrap;  overflow:hidden; "> {{
+                    customerData.email }}</span>
             </div>
         </td>
         <td>
             <div class="table-content-item">
                 <img src="../../assets/icons/calendar.svg" alt="calendar">
-               <span style="white-space: nowrap;">{{ customerData.start_date }}</span> 
+                <span style="white-space: nowrap;">{{ customerData.start_date }}</span>
             </div>
         </td>
         <td>
@@ -61,7 +63,7 @@
                 <div class="switch__container">
                     <!-- switeched for customer status -->
                     <input id="switch-shadow" class="switch switch--shadow "
-                        :class="{ 'switeched' : customerData.customer_status }" type="checkbox" disabled>
+                        :class="{ 'switeched': customerData.customer_status }" type="checkbox" disabled>
                     <label for="switch-shadow"></label>
                 </div>
             </div>

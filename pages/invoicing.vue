@@ -20,7 +20,8 @@
                             <div class="filter-item">
                                 <select>
                                     <option selected disabled>Customer Type</option>
-                                    <option>1</option>
+                                    <option>Broker</option>
+                                    <option>Carrier</option>
                                 </select>
                             </div>
                             <div class="filter-item">
@@ -95,10 +96,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-
-                            <card v-for="item in data" :key="item" :invoiceData="item" />
-
-
+                            <card v-for="(item,index) in data" :key="index" :invoiceData="item" />
                             </tbody>
                         </table>
                     </div>
@@ -352,7 +350,7 @@ axios.get(runtimeConfig.public.API_BASE_URL + "overall/invoicing?page_number=1&p
 }
 
 .customer-header {
-    width: 100%;
+    width: auto;
     height: auto;
     display: flex;
     justify-content: space-between;

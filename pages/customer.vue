@@ -19,8 +19,9 @@
                         <div class="filters">
                             <div class="filter-item">
                                 <select>
-                                    <option selected disabled>Customer Type</option>
-                                    <option>1</option>
+                                    <option selected disabled value="Customer Type">Customer Type</option>
+                                    <option value="broker">Broker</option>
+                                    <option value="carrier">Carrier</option>
                                 </select>
                             </div>
                             <div class="filter-item">
@@ -88,9 +89,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-
-                            <card v-for="item in data" :key="item" :customerData="item" />
-
+                                <card v-for="(item, index) in data" :key="index" :customerData="item" />
                             </tbody>
                         </table>
                     </div>
@@ -105,44 +104,43 @@ import { ref } from 'vue';
 import axios from "axios";
 
 interface CustomerData {
-  logo: string;
-  customer_id: number;
-  parent_id: number | null;
-  customer_type: string;
-  customer_name: string;
-  parent_name: string | null;
-  phone: string;
-  email: string;
-  start_date: string;
-  plan_type: string;
-  variable_rate: number;
-  fixed_rate: number;
-  customer_status: boolean;
+    logo: string;
+    customer_id: number;
+    parent_id: number | null;
+    customer_type: string;
+    customer_name: string;
+    parent_name: string | null;
+    phone: string;
+    email: string;
+    start_date: string;
+    plan_type: string;
+    variable_rate: number;
+    fixed_rate: number;
+    customer_status: boolean;
 }
 
-const data = ref < CustomerData[]> ( [
-  {
-    logo: "",
-    customer_id: 1,
-    parent_id: null,
-    customer_type: "",
-    customer_name: "",
-    parent_name: "",
-    phone: "",
-    email: "",
-    start_date: "",
-    plan_type: "",
-    variable_rate: 0,
-    fixed_rate: 0,
-    customer_status: true
-  },
+const data = ref<CustomerData[]>([
+    {
+        logo: "",
+        customer_id: 1,
+        parent_id: null,
+        customer_type: "",
+        customer_name: "",
+        parent_name: "",
+        phone: "",
+        email: "",
+        start_date: "",
+        plan_type: "",
+        variable_rate: 0,
+        fixed_rate: 0,
+        customer_status: true
+    },
 ])
-
 
 const runtimeConfig = useRuntimeConfig();
 
 axios.get(runtimeConfig.public.API_BASE_URL + "overall/customers-managment?page_number=1&page_size=5").then((res) => {
-  data.value = res.data.data
+    data.value = res.data.data
 })
 </script>
 <style scoped>
@@ -318,7 +316,7 @@ axios.get(runtimeConfig.public.API_BASE_URL + "overall/customers-managment?page_
     font-size: 14px;
     font-family: Euclid-Medium;
     cursor: pointer;
-  text-decoration: none;
+    text-decoration: none;
 }
 
 .active {
@@ -343,7 +341,7 @@ axios.get(runtimeConfig.public.API_BASE_URL + "overall/customers-managment?page_
 }
 
 .customer-header {
-    width: 100%;
+    width: auto;
     height: auto;
     display: flex;
     justify-content: space-between;
@@ -546,7 +544,8 @@ th {
     .item {
         font-size: 9px;
     }
-    .filter-item{
+
+    .filter-item {
         width: 100%;
     }
 }

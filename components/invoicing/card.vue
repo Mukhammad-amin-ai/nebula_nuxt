@@ -8,50 +8,47 @@
         <td>
             <div class="table-content-item">
                 <img :src="invoiceData.logo" alt="Avatar">
-              {{ invoiceData.customer_id }}
+                {{ invoiceData.customer_id }}
             </div>
         </td>
         <td>
             <div class="table-content-item">
-              {{ invoiceData.parent_id }}
+                {{ invoiceData.parent_id === 0 ? '' : invoiceData.parent_id }}
+            </div>
+        </td>
+        <td>
+            <div class="table-content-item">
+                {{ invoiceData.customer_type }}
 
             </div>
         </td>
         <td>
             <div class="table-content-item">
-              {{ invoiceData.customer_type }}
+                {{ invoiceData.customer_name }}
 
             </div>
         </td>
         <td>
             <div class="table-content-item">
-              {{ invoiceData.customer_name }}
-
-            </div>
-        </td>
-        <td>
-            <div class="table-content-item">
-              <span style="color:#92969F !important;">{{ invoiceData.invoice_period.split('\n')[0] }}</span>
-              <span>{{ invoiceData.invoice_period.split('\n')[1] }}</span>
+                <span style="color:#92969F !important;">{{ invoiceData.invoice_period.split('\n')[0] }}</span>
+                <span>{{ invoiceData.invoice_period.split('\n')[1] }}</span>
             </div>
         </td>
         <td>
             <div class="table-content-item">
                 <img src="../../assets/icons/calendar.svg" alt="calendar">
-              {{ invoiceData.due_date }}
+                {{ invoiceData.due_date }}
 
             </div>
         </td>
         <td>
             <div class="table-content-item">
-              $   {{ invoiceData.current_balance }}
-
+                <span style="white-space: nowrap;"> $ {{ invoiceData.current_balance }}</span>
             </div>
         </td>
         <td>
             <div class="table-content-item">
-                $              {{ invoiceData.past_due_balance }}
-
+                <span style="white-space: nowrap;"> $ {{ invoiceData.past_due_balance }}</span>
             </div>
         </td>
         <td>
@@ -61,24 +58,27 @@
         </td>
         <td>
             <div class="table-content-item">
-              {{ invoiceData.email }}
+                <span style="width: 100px; text-overflow: ellipsis;  white-space:nowrap;  overflow:hidden; ">{{
+                    invoiceData.email }}</span>
             </div>
         </td>
         <td>
             <div class="table-content-item">
-              {{ invoiceData.invoice_status }}
+                <div class="invoice_status" :class="invoiceData.invoice_status">
+                    {{ invoiceData.invoice_status }}
+                </div>
             </div>
         </td>
         <td>
             <div class="table-content-item">
                 <img src="../../assets/icons/calendar.svg" alt="calendar">
-              {{ invoiceData.invoice_date }}
+                {{ invoiceData.invoice_date }}
             </div>
         </td>
         <td>
             <div class="table-content-item">
                 <img src="../../assets/icons/calendar.svg" alt="calendar">
-              {{ invoiceData.reminder_sent }}
+                {{ invoiceData.reminder_sent }}
             </div>
         </td>
     </tr>
@@ -112,5 +112,34 @@ td:nth-child(3) {
 
 td:nth-child(6) .table-content-item {
     flex-direction: column;
+}
+
+td:nth-child(12) .table-content-item .invoice_status {
+    display: flex;
+    padding: 8px 20px;
+    align-items: center;
+    gap: 8px;
+    border-radius: 3000px;
+    white-space: nowrap;
+}
+
+.Paid {
+    background: rgba(211, 244, 230, 0.50);
+    color: #60BF98;
+}
+
+.Posted {
+    background: #F7E6D7;
+    color: #FC8416;
+}
+
+.Past {
+    background: #E0D9FA;
+    color: #6D61EC;
+}
+
+.Ready {
+    background: #FAF3DD;
+    color: #DBA32A;
 }
 </style>
