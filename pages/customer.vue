@@ -343,7 +343,7 @@ axios.get(runtimeConfig.public.API_BASE_URL + "overall/customers-managment?page_
     border-radius: 16px;
     background-color: #fff;
     position: absolute;
-    top: -110px;
+    top: -120px;
 }
 
 .customer-header {
@@ -351,7 +351,7 @@ axios.get(runtimeConfig.public.API_BASE_URL + "overall/customers-managment?page_
     height: auto;
     display: flex;
     justify-content: space-between;
-    padding:10px;
+    padding:16px;
 }
 
 .customer-logo {
