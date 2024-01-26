@@ -45,7 +45,7 @@
             </div>
           </div>
           <div class="customer-table">
-          
+
             <table>
               <thead>
                 <tr>
@@ -96,45 +96,37 @@
                 </tr>
               </thead>
               <div class="loader-parent" v-if="is_loading">
-              <div class="lds-roller">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+                <div class="lds-roller">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
               </div>
-            </div>
               <tbody v-else>
-                <card
-                  v-for="(item, index) in data"
-                  :key="index"
-                  :invoiceData="item"
-                />
+                <card v-for="(item, index) in data" :key="index" :invoiceData="item" />
               </tbody>
             </table>
+            <div class="pagination" v-if="pagination.total_pages">
+              <div class="pagination_item" @click="prevPage">
+                <img src="@/assets/icons/prev.svg" alt="" />
+              </div>
+              <div class="pagination_item" v-for="item in pagination.total_pages" :key="item"
+                :class="{ active_pagination: pagination.page_number === item }" @click="sendPage(item)">
+                {{ item }}
+              </div>
+              <div class="pagination_item" @click="nextPage">
+                <img src="@/assets/icons/next.svg" alt="" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="pagination" v-if="pagination.total_pages">
-        <div class="pagination_item" @click="prevPage">
-          <img src="@/assets/icons/prev.svg" alt="" />
-        </div>
-        <div
-          class="pagination_item"
-          v-for="item in pagination.total_pages"
-          :key="item"
-          :class="{ active_pagination: pagination.page_number === item }"
-          @click="sendPage(item)"
-        >
-          {{ item }}
-        </div>
-        <div class="pagination_item" @click="nextPage">
-          <img src="@/assets/icons/next.svg" alt="" />
-        </div>
-      </div>
+
     </div>
   </div>
 </template>
@@ -205,12 +197,12 @@ const fetchData = () => {
   axios
     .get(
       runtimeConfig.public.API_BASE_URL +
-        `overall/invoicing?page_number=${page_number.value}&page_size=5`
+      `overall/invoicing?page_number=${page_number.value}&page_size=5`
     )
     .then((res) => {
       data.value = res.data.data;
       pagination.value = res.data;
-  is_loading.value = false
+      is_loading.value = false
 
     });
   is_loading.value = false
@@ -236,6 +228,156 @@ onMounted(() => {
 });
 </script>
 <style scoped>
+.pagination {
+  position: absolute;
+  bottom: -70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  gap: 8px;
+  z-index: 100;
+}
+
+.pagination_item {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  padding: 4px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid #E0E1E5;
+  cursor: pointer;
+}
+
+.active_pagination {
+  background: #2F323A;
+  color: white;
+  border: 0;
+}
+
+
+
+.loader-parent {
+  position: absolute;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.lds-roller {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.lds-roller div {
+  animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  transform-origin: 40px 40px;
+}
+
+.lds-roller div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #dedede;
+  margin: -4px 0 0 -4px;
+}
+
+.lds-roller div:nth-child(1) {
+  animation-delay: -0.036s;
+}
+
+.lds-roller div:nth-child(1):after {
+  top: 63px;
+  left: 63px;
+}
+
+.lds-roller div:nth-child(2) {
+  animation-delay: -0.072s;
+}
+
+.lds-roller div:nth-child(2):after {
+  top: 68px;
+  left: 56px;
+}
+
+.lds-roller div:nth-child(3) {
+  animation-delay: -0.108s;
+}
+
+.lds-roller div:nth-child(3):after {
+  top: 71px;
+  left: 48px;
+}
+
+.lds-roller div:nth-child(4) {
+  animation-delay: -0.144s;
+}
+
+.lds-roller div:nth-child(4):after {
+  top: 72px;
+  left: 40px;
+}
+
+.lds-roller div:nth-child(5) {
+  animation-delay: -0.18s;
+}
+
+.lds-roller div:nth-child(5):after {
+  top: 71px;
+  left: 32px;
+}
+
+.lds-roller div:nth-child(6) {
+  animation-delay: -0.216s;
+}
+
+.lds-roller div:nth-child(6):after {
+  top: 68px;
+  left: 24px;
+}
+
+.lds-roller div:nth-child(7) {
+  animation-delay: -0.252s;
+}
+
+.lds-roller div:nth-child(7):after {
+  top: 63px;
+  left: 17px;
+}
+
+.lds-roller div:nth-child(8) {
+  animation-delay: -0.288s;
+}
+
+.lds-roller div:nth-child(8):after {
+  top: 56px;
+  left: 12px;
+}
+
+@keyframes lds-roller {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
 .container {
   width: 100vw;
   width: 100%;
@@ -412,7 +554,7 @@ onMounted(() => {
 
 .main-section {
   width: 100%;
-  height: 800px;
+  height: 840px;
   background-color: #f8f8f8;
   display: flex;
   justify-content: center;
