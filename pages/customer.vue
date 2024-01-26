@@ -100,19 +100,22 @@
         </div>
       </div>
       <div class="pagination" v-if="pagination.total_pages">
-        <div class="pagination_item">
-          <img src="@/assets/icons/prev.svg" alt="">
-        </div>
-        <div class="pagination_item"
-             v-for="item in pagination.total_pages"
-             :key="item"
-             :class="{ 'active_pagination': pagination.page_number === item }">
-          {{ item }}
-        </div>
-        <div class="pagination_item">
-          <img src="@/assets/icons/next.svg" alt="">
-        </div>
+      <div class="pagination_item" @click="prevPage">
+        <img src="@/assets/icons/prev.svg" alt="" />
       </div>
+      <div
+        class="pagination_item"
+        v-for="item in pagination.total_pages"
+        :key="item"
+        :class="{ active_pagination: pagination.page_number === item }"
+        @click="sendPage(item)"
+      >
+        {{ item }}
+      </div>
+      <div class="pagination_item" @click="nextPage">
+        <img src="@/assets/icons/next.svg" alt="" />
+      </div>
+    </div>
     </div>
   </div>
 </template>
@@ -120,6 +123,13 @@
 import Card from "@/components/customer-management/card.vue";
 import { ref } from "vue";
 import axios from "axios";
+
+interface PaginationData<T> {
+  page_size: number;
+  page_number: number;
+  total_pages: number;
+  data: T[];
+}
 
 interface CustomerData {
   logo: string;
@@ -154,18 +164,50 @@ const data = ref<CustomerData[]>([
     customer_status: true,
   },
 ]);
-const pagination = ref({});
+const pagination = ref<PaginationData<CustomerData>>({
+  page_size: 0,
+  page_number: 0,
+  total_pages: 0,
+  data: [],
+});
+const page_number = ref(1);
 const runtimeConfig = useRuntimeConfig();
 
-axios
-  .get(
-    runtimeConfig.public.API_BASE_URL +
-      "overall/customers-managment?page_number=1&page_size=5",
-  )
-  .then((res) => {
-    data.value = res.data.data;
-    pagination.value = res.data;
-  });
+const sendPage = (page_count: number) => {
+  page_number.value = page_count;
+  fetchData();
+  
+};
+
+const fetchData = () => {
+  axios
+    .get(
+      runtimeConfig.public.API_BASE_URL +
+        `overall/customers-managment?page_number=${page_number.value}&page_size=5`
+    )
+    .then((res) => {
+      data.value = res.data.data;
+      pagination.value = res.data;
+    });
+};
+
+const prevPage = () => {
+  if (pagination.value.page_number > 1) {
+    page_number.value = pagination.value.page_number - 1;
+    fetchData();
+  }
+};
+
+const nextPage = () => {
+  if (pagination.value.page_number < pagination.value.total_pages) {
+    page_number.value = pagination.value.page_number + 1;
+    fetchData();
+  }
+};
+
+onMounted(() => {
+  fetchData();
+});
 </script>
 <style scoped>
 .container {
@@ -366,7 +408,7 @@ axios
   border-radius: 16px;
   background-color: #fff;
   position: absolute;
-  //transform: translateY(-97px);
+
   top: -97px;
 }
 

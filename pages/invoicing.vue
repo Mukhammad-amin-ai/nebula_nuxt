@@ -45,6 +45,7 @@
             </div>
           </div>
           <div class="customer-table">
+          
             <table>
               <thead>
                 <tr>
@@ -94,7 +95,19 @@
                   </th>
                 </tr>
               </thead>
-              <tbody>
+              <div class="loader-parent" v-if="is_loading">
+              <div class="lds-roller">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </div>
+              <tbody v-else>
                 <card
                   v-for="(item, index) in data"
                   :key="index"
@@ -106,7 +119,7 @@
         </div>
       </div>
       <div class="pagination" v-if="pagination.total_pages">
-        <div class="pagination_item">
+        <div class="pagination_item" @click="prevPage">
           <img src="@/assets/icons/prev.svg" alt="" />
         </div>
         <div
@@ -114,10 +127,11 @@
           v-for="item in pagination.total_pages"
           :key="item"
           :class="{ active_pagination: pagination.page_number === item }"
+          @click="sendPage(item)"
         >
           {{ item }}
         </div>
-        <div class="pagination_item">
+        <div class="pagination_item" @click="nextPage">
           <img src="@/assets/icons/next.svg" alt="" />
         </div>
       </div>
@@ -128,6 +142,13 @@
 import card from "../components/invoicing/card.vue";
 import { ref } from "vue";
 import axios from "axios";
+
+interface PaginationData<T> {
+  page_size: number;
+  page_number: number;
+  total_pages: number;
+  data: T[];
+}
 
 interface invoicingData {
   logo: string;
@@ -164,18 +185,55 @@ const data = ref<invoicingData[]>([
     reminder_sent: "",
   },
 ]);
+const pagination = ref<PaginationData<invoicingData>>({
+  page_size: 0,
+  page_number: 0,
+  total_pages: 0,
+  data: [],
+});
+const page_number = ref(1);
+const is_loading = ref(true);
 const runtimeConfig = useRuntimeConfig();
-const pagination = ref({});
 
-axios
-  .get(
-    runtimeConfig.public.API_BASE_URL +
-      "overall/invoicing?page_number=1&page_size=10",
-  )
-  .then((res) => {
-    data.value = res.data.data;
-    pagination.value = res.data;
-  });
+const sendPage = (page_count: number) => {
+  page_number.value = page_count;
+  fetchData();
+};
+
+const fetchData = () => {
+  is_loading.value = true
+  axios
+    .get(
+      runtimeConfig.public.API_BASE_URL +
+        `overall/invoicing?page_number=${page_number.value}&page_size=5`
+    )
+    .then((res) => {
+      data.value = res.data.data;
+      pagination.value = res.data;
+  is_loading.value = false
+
+    });
+  is_loading.value = false
+
+};
+
+const prevPage = () => {
+  if (pagination.value.page_number > 1) {
+    page_number.value = pagination.value.page_number - 1;
+    fetchData();
+  }
+};
+
+const nextPage = () => {
+  if (pagination.value.page_number < pagination.value.total_pages) {
+    page_number.value = pagination.value.page_number + 1;
+    fetchData();
+  }
+};
+
+onMounted(() => {
+  fetchData();
+});
 </script>
 <style scoped>
 .container {
