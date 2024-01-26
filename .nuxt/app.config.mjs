@@ -1,6 +1,6 @@
 
 import { updateAppConfig } from '#app'
-import { defuFn } from 'C:/Users/E-MAX PC Shop/Desktop/vue/nebula_nuxt/node_modules/defu/dist/defu.mjs'
+import { defuFn } from 'D:/projects/freelancing/nebula_nuxt/node_modules/defu/dist/defu.mjs'
 
 const inlineConfig = {}
 

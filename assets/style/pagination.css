@@ -1,0 +1,29 @@
+.pagination {
+    position: absolute;
+    bottom: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    gap: 8px;
+}
+
+.pagination_item  {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    padding: 4px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    border: 1px solid  #E0E1E5;
+    cursor: pointer;
+}
+
+.active_pagination {
+    background: #2F323A;
+    color: white;
+    border: 0;
+}
