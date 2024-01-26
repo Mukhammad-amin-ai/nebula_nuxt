@@ -84,8 +84,8 @@ td {
 }
 
 .table-content-item {
-    display: flex;
     height: 72px;
+    display: flex;
     padding: 16px 24px;
     justify-content: center;
     align-items: center;
@@ -93,8 +93,9 @@ td {
     align-self: stretch;
 }
 
-td:nth-child(2) {
+td:nth-child(2) .table-content-item {
     color: #4478FF;
+    padding: 16px 0;
 }
 
 td:nth-child(10) {
@@ -104,7 +105,7 @@ td:nth-child(10) {
 
 /* SWITCH LIKE IOS =============================== */
 .switch__container {
-    width: 100px;
+    width: 80px;
     display: flex;
     justify-content: center;
 }
